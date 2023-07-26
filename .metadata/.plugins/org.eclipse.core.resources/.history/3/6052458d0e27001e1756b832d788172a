@@ -1,0 +1,12 @@
+package restassured;
+
+import io.restassured.RestAssured;
+
+
+public class API_test {
+	
+	public void Flyawaya() {
+		String url = "https://reqres.in/api/users?page=2";
+		RestAssured.baseURI= url;
+	}
+}

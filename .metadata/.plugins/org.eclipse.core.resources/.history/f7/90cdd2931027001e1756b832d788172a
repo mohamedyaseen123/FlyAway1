@@ -1,0 +1,19 @@
+package restassured;
+
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
+public class Api_booked_list {
+
+	
+	public void Flyawaya1() {
+		String url = "http://localhost:9012/FlyAway/completepurchase";
+		RestAssured.baseURI= url;
+		
+		RequestSpecification requestSpecification = RestAssured.given();
+		Response response = requestSpecification.accept(ContentType.JSON).get();
+		System.out.println(response.asPrettyString());
+}
+}

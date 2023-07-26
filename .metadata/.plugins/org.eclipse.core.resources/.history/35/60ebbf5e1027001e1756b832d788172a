@@ -1,0 +1,5 @@
+package restassured;
+
+public class Api_booked_list {
+
+}

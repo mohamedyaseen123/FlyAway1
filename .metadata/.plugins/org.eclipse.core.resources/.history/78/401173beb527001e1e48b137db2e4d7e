@@ -1,0 +1,127 @@
+package pomtest;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
+
+import pom.Booking_page;
+import pom.Dashboard_page;
+import pom.Home_page;
+import pom.Login_page;
+import pom.Register_confirm;
+import pom.Registration_page;
+
+public class Home_page_test {
+
+	@Test
+	public void login_page() throws InterruptedException {
+
+		System.setProperty("webdriver.chrome.driver", "/home/yaseenyazoutloo/Downloads/chromedriver.exe");
+		WebDriver driver =new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.get("http://localhost:9012/FlyAway/");
+
+		Thread.sleep(3000);
+		WebElement courseElement =
+				driver.findElement(By.xpath("//select[@name='source']"));
+		Select courseNameDropdown = new Select(courseElement);
+		courseNameDropdown.selectByIndex(2);
+
+		Thread.sleep(3000);
+		WebElement courseElement1 =
+				driver.findElement(By.xpath("//select[@name='destination']"));
+		Select courseNameDropdown1 = new Select(courseElement1);
+		courseNameDropdown1.selectByIndex(4);
+		
+		PageFactory.initElements(driver, Home_page.class);
+		
+		Thread.sleep(3000);
+		Home_page.submit.click();
+		
+		Thread.sleep(3000);
+		Home_page.bookflight.click();
+		
+		Thread.sleep(3000);
+		Home_page.Loginbutton.click();
+		
+		PageFactory.initElements(driver, Login_page.class);
+		
+		Thread.sleep(3000);
+		Login_page.signup.click();
+		
+		PageFactory.initElements(driver, Registration_page.class);
+		
+		Thread.sleep(3000);
+		Registration_page.email.sendKeys("vigneshta95@gmail.com");
+		
+		Thread.sleep(3000);
+		Registration_page.password.sendKeys("VI944@322a");
+		
+		Thread.sleep(3000);
+		Registration_page.cnfpassword.sendKeys("VI944@322a");
+		
+		Thread.sleep(3000);
+		Registration_page.name.sendKeys("vignesh");
+		
+		Thread.sleep(3000);
+		Registration_page.address.sendKeys("smt hall ramohalli");
+		
+		Thread.sleep(3000);
+		Registration_page.city.sendKeys("benglore");
+		
+		Thread.sleep(3000);
+		Registration_page.signupbutton.click();
+		
+		PageFactory.initElements(driver, Register_confirm.class);
+		
+		Thread.sleep(3000);
+		Register_confirm.login.click();
+		
+		Thread.sleep(3000);
+		Login_page.Loginemail.sendKeys("vigneshta95@gmail.com");
+		
+		Thread.sleep(3000);
+		Login_page.Loginpassword.sendKeys("VI944@322a");
+		
+		Thread.sleep(3000);
+		Login_page.Loginbutton.click();
+		
+		PageFactory.initElements(driver, Dashboard_page.class);
+		
+		Thread.sleep(3000);
+		Dashboard_page.Home.click();
+		
+		Thread.sleep(3000);
+		WebElement courseElement3 =
+				driver.findElement(By.xpath("//select[@name='source']"));
+		Select courseNameDropdown3 = new Select(courseElement3);
+		courseNameDropdown3.selectByIndex(2);
+
+		Thread.sleep(3000);
+		WebElement courseElement4 =
+				driver.findElement(By.xpath("//select[@name='destination']"));
+		Select courseNameDropdown4 = new Select(courseElement4);
+		courseNameDropdown4.selectByIndex(4);
+		
+		Thread.sleep(3000);
+		Home_page.submit.click();
+		
+		Thread.sleep(3000);
+		Home_page.bookflight.click();
+		
+		PageFactory.initElements(driver, Booking_page.class);
+		
+		Thread.sleep(3000);
+		Booking_page.bookaflight.click();
+		
+	}
+}
+
+
